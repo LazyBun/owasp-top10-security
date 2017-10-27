@@ -28,9 +28,9 @@ to develop, purchase and maintain applications which can be trusted. Non-profit,
 
 ## Where does the data come from?
 
-* 40+ data submissions from security companies |
-* 515 individuals |
-* Data spans 100k applications
+- 40+ data submissions from security companies |
+- 515 individuals |
+- Data spans 100k applications
 
 Note:
 The OWASP Top 10 for 2017 is based primarily on 40+ data submissions from firms that specialize in application security and an
@@ -56,9 +56,9 @@ and tamper with data.
 
 ## How do I fight it?
 
-* All login, access control failures and input validation failures should be logged |
-* Establish effective monitoring and alerting |
-* Establish / adopt incident response and recovery plan
+- All login, access control failures and input validation failures should be logged |
+- Establish effective monitoring and alerting |
+- Establish / adopt incident response and recovery plan
 
 ---
 
@@ -76,10 +76,10 @@ serious data loss or server takeover.
 +++
 
 ## How do I fight it?
-* Keep your dependencies up to date (tools: [versions](http://www.mojohaus.org/versions-maven-plugin/), [OWASP DependencyCheck](https://www.owasp.org/index.php/OWASP_Dependency_Check), [retire.js](https://github.com/retirejs/retire.js/)) |
-* Monitor sources like [Common Vulnerabilities and Exposures](https://cve.mitre.org/) and [National Vulnerability Database](https://nvd.nist.gov/) |
-* Get packages from official sources and prefer signed packages |
-* If update is not possible, consider using [virtual patch](https://www.owasp.org/index.php/Virtual_Patching_Best_Practices#What_is_a_Virtual_Patch.3F)
+- Keep your dependencies up to date (tools: [versions](http://www.mojohaus.org/versions-maven-plugin/), [OWASP DependencyCheck](https://www.owasp.org/index.php/OWASP_Dependency_Check), [retire.js](https://github.com/retirejs/retire.js/)) |
+- Monitor sources like [Common Vulnerabilities and Exposures](https://cve.mitre.org/) and [National Vulnerability Database](https://nvd.nist.gov/) |
+- Get packages from official sources and prefer signed packages |
+- If update is not possible, consider using [virtual patch](https://www.owasp.org/index.php/Virtual_Patching_Best_Practices#What_is_a_Virtual_Patch.3F)
 
 +++
 
@@ -160,9 +160,9 @@ foo='+document.cookie</script>'.
 +++
 
 ## How do I fight it?
-* Use safe frameworks that automatically escape for XSS by design (ex. ReactJS) |
-* Validate inputs |
-* Escape outputs
+- Use safe frameworks that automatically escape for XSS by design (ex. ReactJS) |
+- Validate inputs |
+- Escape outputs
 
 Note:
 Links: https://www.owasp.org/index.php/Abridged_XSS_Prevention_Cheat_Sheet
@@ -176,11 +176,11 @@ Number 6
 # What's that?
 
 Title says it all, but for example:
-* insecure default configurations |
-* open S3 buckets |
-* misconfigured HTTP headers |
-* error messages containing sensitive information |
-* not patching or upgrading systems, frameworks, dependencies, and components in a timely fashion (or at all)
+- insecure default configurations |
+- open S3 buckets |
+- misconfigured HTTP headers |
+- error messages containing sensitive information |
+- not patching or upgrading systems, frameworks, dependencies, and components in a timely fashion (or at all)
 
 +++
 
@@ -192,11 +192,11 @@ The app server admin console is automatically installed and not removed.
 
 ## How do I fight it?
 
-* A repeatable hardening process that makes it fast and easy to deploy another environment that is properly locked down. |
-* Dev, QA and prod environments should be configured identically (With different credentials obviously) |
-* Remove unused dependencies and frameworks | 
-* Update as fast as possible (See Number 9) |
-* Automated verification process
+- A repeatable hardening process that makes it fast and easy to deploy another environment that is properly locked down. |
+- Dev, QA and prod environments should be configured identically (With different credentials obviously) |
+- Remove unused dependencies and frameworks | 
+- Update as fast as possible (See Number 9) |
+- Automated verification process
 
 ---
 
@@ -227,12 +227,12 @@ http://example.com/app/accountInfo?acct=notmyacct
 
 ## How do I fight it?
 
-* With the exception of public resources, deny by default |
-* Implement access control mechanisms once and re-use them throughout the application |
-* Disable web server directory listing, ensure file metadata (ex. .git) is not present within web roots |
-* Log access control failures |
-* Rate limiting API to minimize the harm from automated attack tooling |
-* Access control unit and integration tests
+- With the exception of public resources, deny by default |
+- Implement access control mechanisms once and re-use them throughout the application |
+- Disable web server directory listing, ensure file metadata (ex. .git) is not present within web roots |
+- Log access control failures |
+- Rate limiting API to minimize the harm from automated attack tooling |
+- Access control unit and integration tests
 
 ---
 
@@ -266,12 +266,12 @@ The attacker attempts to extract data from the server
 
 ## How do I fight it?
 
-* Developer training is essential to identify and mitigate XXE completely |
-* Disable XML external entity and DTD processing |
-* Validate inputs |
-* Patch or upgrade all the latest XML processors and libraries |
-* Upgrade SOAP to the latest version |
-* If these controls are not possible, consider using virtual patching
+- Developer training is essential to identify and mitigate XXE completely |
+- Disable XML external entity and DTD processing |
+- Validate inputs |
+- Patch or upgrade all the latest XML processors and libraries |
+- Upgrade SOAP to the latest version |
+- If these controls are not possible, consider using virtual patching
 
 ---
 
@@ -296,12 +296,12 @@ data is automatically decrypted when retrieved, allowing an SQL injection flaw t
 
 ## How do I fight it?
 
-* Discard sensitive data as soon as possible |
-* Make sure you encrypt all sensitive data at REST |
-* Encrypt all data in transit |
-* Ensure up-to-date and strong standard algorithms or ciphers |
-* Ensure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) |
-* Disable caching for response that contain sensitive data
+- Discard sensitive data as soon as possible |
+- Make sure you encrypt all sensitive data at REST |
+- Encrypt all data in transit |
+- Ensure up-to-date and strong standard algorithms or ciphers |
+- Ensure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) |
+- Disable caching for response that contain sensitive data
 
 ---
 
@@ -330,12 +330,12 @@ Credential stuffing -> the use of lists of known passwords
 
 ## How do I fight it?
 
-* Do not deploy with any default credentials |
-* Ensure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) |
-* Implement password checks against [top 10000 worst passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords) |
-* Where possible, implement multi-factor authentication |
-* Log authentication failures |
-* Align password length, complexity and rotation policies with [NIST 800-63 B's guidelines](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret)
+- Do not deploy with any default credentials |
+- Ensure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) |
+- Implement password checks against [top 10000 worst passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords) |
+- Where possible, implement multi-factor authentication |
+- Log authentication failures |
+- Align password length, complexity and rotation policies with [NIST 800-63 B's guidelines](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret)
 
 Note:
 NIST -> National Institute of Standards and Technology
