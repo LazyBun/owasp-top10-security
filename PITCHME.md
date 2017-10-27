@@ -37,7 +37,7 @@ over 100,000 real-world applications and APIs.
 
 ---
 
-![Let's start](assets/start.gif)
+---?image=assets/start.gif&size=auto 75%
 
 ---
 
