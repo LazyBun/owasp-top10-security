@@ -10,7 +10,7 @@
   - Co back-end developer powinien wiedzieć o Web Security
 - After party
 
----?image=assets/jdd.jpg&size=auto 60%
+---?image=assets/jdd_v2.jpg&size=auto 60%
 
 ---
 
