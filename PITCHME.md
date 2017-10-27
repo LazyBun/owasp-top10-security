@@ -1,6 +1,6 @@
 # TOP 10 SECURITY ISSUES
 
-Number will suprise you!
+Number X will surprise you!
 
 Note:
 Fill in which number
@@ -18,20 +18,19 @@ Short time here, just go to next slide for detailed summary
 
 # What is OWASP
 
+The Open Web Application Security Project
+
 Note:
-The Open Web Application Security Project - open community which is dedicated to enabling oragnizations
-to develop, purchase and maintain applications which can be trusted. Non-profit, almost everyone is volounteer.
+The Open Web Application Security Project - open community which is dedicated to enabling organizations
+to develop, purchase and maintain applications which can be trusted. Non-profit, almost everyone is volunteer.
 
 ---
 
-# What's on the menu
+## Where does the data come from?
 
-Note:
-List top 10 threats
-
-+++
-
-# Where does the data come from?
+* 40+ data submissions from security companies
+* 515 individuals
+* Data spans 100k applications
 
 Note:
 The OWASP Top 10 for 2017 is based primarily on 40+ data submissions from firms that specialize in application security and an
@@ -40,64 +39,103 @@ over 100,000 real-world applications and APIs.
 
 ---
 
-# Injection
+# Insufficient Logging and Monitoring
+Number 10
 
 +++
 
 # What's that?
 
++++
+
+Insufficient logging and monitoring, coupled with missing or ineffective integration with incident
+response allows attackers to further attack systems, maintain persistence, pivot to more systems,
+and tamper, extract or destroy data.
 
 +++
 
 # How do I fight it?
 
+* All login, access control failures and input validation failures should be logged
+* Establish effective monitoring and alerting
+* Establish / adopt incident response and recovery plan
+
 ---
 
-# Broken Authentication
+# Using Components with Known Vulnerabilities
+Number 9
 
 +++
 
 # What's that?
 
+Components, such as libraries, frameworks, and other software modules, run with the same
+privileges as the application. If a vulnerable component is exploited, such an attack can facilitate
+serious data loss or server takeover.
+
++++
+
+# How do I fight it?
+* Keep your dependencies up to date (tools: [versions](http://www.mojohaus.org/versions-maven-plugin/), [OWASP DependencyCheck](https://www.owasp.org/index.php/OWASP_Dependency_Check), [retire.js](https://github.com/retirejs/retire.js/))
+* Monitor sources like [Common Vulnerabilities and Exposures](https://cve.mitre.org/) and [National Vulnerability Database](https://nvd.nist.gov/)
+* Get packages from official sources and prefer signed packages
+* If update is not possible, consider using [virtual patch](https://www.owasp.org/index.php/Virtual_Patching_Best_Practices#What_is_a_Virtual_Patch.3F)
+
+Note:
+What is virtual patch:
+A security policy enforcement layer which prevents the exploitation of a known vulnerability.
+The virtual patch works since the security enforcement layer analyzes transactions and intercepts attacks in transit, so malicious traffic never reaches the web application. 
+
+
+---
+
+# Insecure Deserialization
+Number 8
+
++++
+
+# What's that?
+
+Insecure deserialization flaws occur when an application receives hostile serialized objects.
+Insecure deserialization leads to remote code execution.
+
+Note:
+Maybe add example here, as "what's that" may not be clear
+
++++
+
+Example:
+
+```json
+a:4:{i:0;i:132;i:1;s:7:"Mallory";i:2;s:4:"user";
+i:3;s:32:"b6a8b3bea87fe0e05022f8f3c88bc960";}
+
+a:4:{i:0;i:1;i:1;s:5:"Alice";i:2;s:5:"admin";
+i:3;s:32:"b6a8b3bea87fe0e05022f8f3c88bc960";}
+```
+@[1-2](A forum uses object serialization to save a cookie containing user ID, role, password hash.)
+@[4-5](Attacker changes the object to give themselves admin privileges)
 
 +++
 
 # How do I fight it?
 
+The only safe architectural pattern is to not accept serialized
+objects from untrusted sources or to use serialization mediums
+that only permit primitive data types.
+
 ---
 
-# Sensitive Data Exposure
+# Cross-Site Scripting (XSS)
+Number 7
 
 +++
 
 # What's that?
 
-
-+++
-
-# How do I fight it?
-
----
-
-# XML External Entities (XEE)
-
-+++
-
-# What's that?
-
-
-+++
-
-# How do I fight it?
-
----
-
-# Broken Access Control
-
-+++
-
-# What's that?
-
+XSS flaws occur whenever an application includes untrusted data in a new web page without
+proper validation or escaping, or updates an existing web page with user supplied data using a
+browser API that can create JavaScript.
 
 +++
 
@@ -106,11 +144,18 @@ over 100,000 real-world applications and APIs.
 ---
 
 # Security Misconfiguration
+Number 6
 
 +++
 
 # What's that?
 
+Title says it all, but for example:
+* insecure default configurations
+* open S3 buckets
+* misconfigured HTTP headers,
+* error messages containing sensitive information 
+* not patching or upgrading systems, frameworks, dependencies, and components in a timely fashion (or at all)
 
 +++
 
@@ -118,12 +163,15 @@ over 100,000 real-world applications and APIs.
 
 ---
 
-# Cross-Site Scripting (XSS)
+# Broken Access Control
+Number 5
 
 +++
 
 # What's that?
 
+Restrictions on what authenticated users are allowed to do are not properly enforced. Attackers can
+exploit these flaws to access unauthorized functionality and/or data.
 
 +++
 
@@ -131,12 +179,16 @@ over 100,000 real-world applications and APIs.
 
 ---
 
-# Insecure Deserialization
+# XML External Entities (XEE)
+Number 4
 
 +++
 
 # What's that?
 
+External entities can be used to disclose internal files using the file URI handler,
+internal SMB file shares on unpatched Windows servers, internal port scanning, remote code
+execution, and denial of service attacks.
 
 +++
 
@@ -144,12 +196,15 @@ over 100,000 real-world applications and APIs.
 
 ---
 
-# Using Components with Known Vulnerabilites
+# Sensitive Data Exposure
+Number 3
 
 +++
 
 # What's that?
 
+Many web applications and APIs do not properly protect sensitive data. Sensitive data deserves extra protection such as
+encryption at rest or in transit, as well as special precautions when exchanged with the browser.
 
 +++
 
@@ -157,12 +212,33 @@ over 100,000 real-world applications and APIs.
 
 ---
 
-# Insufficient Logging and Monitoring
+# Broken Authentication
+Number 2
 
 +++
 
 # What's that?
 
+Application functions related to authentication and session management are often implemented
+incorrectly, allowing attackers to compromise passwords, keys, or session tokens, or to exploit
+other implementation flaws to assume other users’ identities
+
++++
+
+# How do I fight it?
+
+---
+
+# Injection
+Number 1
+
++++
+
+# What's that?
+
+Injection flaws, such as SQL, OS, and LDAP injection occur when untrusted data is sent to an
+interpreter as part of a command or query. The attacker’s hostile data can trick the interpreter into
+executing unintended commands or accessing data without proper authorization.
 
 +++
 
