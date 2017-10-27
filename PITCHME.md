@@ -28,8 +28,8 @@ to develop, purchase and maintain applications which can be trusted. Non-profit,
 
 ## Where does the data come from?
 
-* 40+ data submissions from security companies
-* 515 individuals
+* 40+ data submissions from security companies |
+* 515 individuals |
 * Data spans 100k applications
 
 Note:
@@ -48,16 +48,16 @@ Number 10
 
 +++
 
-Insufficient logging and monitoring, coupled with missing or ineffective integration with incident
-response allows attackers to further attack systems, maintain persistence, pivot to more systems,
-and tamper, extract or destroy data.
+Insufficient logging and monitoring, along with ineffective incident response allows 
+attackers to further attack systems, maintain persistence, pivot to more systems,
+and tamper with data.
 
 +++
 
-# How do I fight it?
+## How do I fight it?
 
-* All login, access control failures and input validation failures should be logged
-* Establish effective monitoring and alerting
+* All login, access control failures and input validation failures should be logged |
+* Establish effective monitoring and alerting |
 * Establish / adopt incident response and recovery plan
 
 ---
@@ -69,23 +69,24 @@ Number 9
 
 # What's that?
 
-Components, such as libraries, frameworks, and other software modules, run with the same
+Components (ex. libraries, frameworks) run with the same
 privileges as the application. If a vulnerable component is exploited, such an attack can facilitate
 serious data loss or server takeover.
 
 +++
 
-# How do I fight it?
-* Keep your dependencies up to date (tools: [versions](http://www.mojohaus.org/versions-maven-plugin/), [OWASP DependencyCheck](https://www.owasp.org/index.php/OWASP_Dependency_Check), [retire.js](https://github.com/retirejs/retire.js/))
-* Monitor sources like [Common Vulnerabilities and Exposures](https://cve.mitre.org/) and [National Vulnerability Database](https://nvd.nist.gov/)
-* Get packages from official sources and prefer signed packages
+## How do I fight it?
+* Keep your dependencies up to date (tools: [versions](http://www.mojohaus.org/versions-maven-plugin/), [OWASP DependencyCheck](https://www.owasp.org/index.php/OWASP_Dependency_Check), [retire.js](https://github.com/retirejs/retire.js/)) |
+* Monitor sources like [Common Vulnerabilities and Exposures](https://cve.mitre.org/) and [National Vulnerability Database](https://nvd.nist.gov/) |
+* Get packages from official sources and prefer signed packages |
 * If update is not possible, consider using [virtual patch](https://www.owasp.org/index.php/Virtual_Patching_Best_Practices#What_is_a_Virtual_Patch.3F)
 
-Note:
-What is virtual patch:
++++
+
+# What is virtual patch?
+
 A security policy enforcement layer which prevents the exploitation of a known vulnerability.
 The virtual patch works since the security enforcement layer analyzes transactions and intercepts attacks in transit, so malicious traffic never reaches the web application. 
-
 
 ---
 
@@ -119,7 +120,7 @@ i:3;s:32:"b6a8b3bea87fe0e05022f8f3c88bc960";}
 
 +++
 
-# How do I fight it?
+## How do I fight it?
 
 The only safe architectural pattern is to not accept serialized
 objects from untrusted sources or to use serialization mediums
@@ -158,12 +159,12 @@ foo='+document.cookie</script>'.
 
 +++
 
-# How do I fight it?
-* Use safe frameworks that automatically escape for XSS by design (ex. ReactJS)
-* Validate inputs
+## How do I fight it?
+* Use safe frameworks that automatically escape for XSS by design (ex. ReactJS) |
+* Validate inputs |
 * Escape outputs
 
-Notes:
+Note:
 Links: https://www.owasp.org/index.php/Abridged_XSS_Prevention_Cheat_Sheet
 ---
 
@@ -175,10 +176,10 @@ Number 6
 # What's that?
 
 Title says it all, but for example:
-* insecure default configurations
-* open S3 buckets
-* misconfigured HTTP headers,
-* error messages containing sensitive information 
+* insecure default configurations |
+* open S3 buckets |
+* misconfigured HTTP headers |
+* error messages containing sensitive information |
 * not patching or upgrading systems, frameworks, dependencies, and components in a timely fashion (or at all)
 
 +++
@@ -189,12 +190,12 @@ The app server admin console is automatically installed and not removed.
 
 +++
 
-# How do I fight it?
+## How do I fight it?
 
-* A repeatable hardening process that makes it fast and easy to deploy another environment that is properly locked down.
-* Dev, QA and prod environments should be configured identically (With different credentials obviously)
-* Remove unused dependencies and frameworks
-* Update as fast as possible (See Number 9)
+* A repeatable hardening process that makes it fast and easy to deploy another environment that is properly locked down. |
+* Dev, QA and prod environments should be configured identically (With different credentials obviously) |
+* Remove unused dependencies and frameworks | 
+* Update as fast as possible (See Number 9) |
 * Automated verification process
 
 ---
@@ -224,14 +225,14 @@ http://example.com/app/accountInfo?acct=notmyacct
 
 +++
 
-# How do I fight it?
+## How do I fight it?
 
-* With the exception of public resources, deny by default
-* Implement access control mechanisms once and re-use them throughout the application
-* Disable web server directory listing, and ensure file metadata such (e.g. .git) is not present within web roots
-* Log access control failures
-* Rate limiting API and controller access to minimize the harm from automated attack tooling
-* Developers and QA staff should include functional access control unit and integration tests
+* With the exception of public resources, deny by default |
+* Implement access control mechanisms once and re-use them throughout the application |
+* Disable web server directory listing, ensure file metadata (ex. .git) is not present within web roots |
+* Log access control failures |
+* Rate limiting API to minimize the harm from automated attack tooling |
+* Access control unit and integration tests
 
 ---
 
@@ -263,13 +264,13 @@ The attacker attempts to extract data from the server
 
 +++
 
-# How do I fight it?
+## How do I fight it?
 
-* Developer training is essential to identify and mitigate XXE completely
-* Disable XML external entity and DTD processing in all XML parsers in your application
-* Validate inputs
-* Patch or upgrade all the latest XML processors and libraries in use by the app or on the underlying operating system
-* Upgrade SOAP to the latest version
+* Developer training is essential to identify and mitigate XXE completely |
+* Disable XML external entity and DTD processing |
+* Validate inputs |
+* Patch or upgrade all the latest XML processors and libraries |
+* Upgrade SOAP to the latest version |
 * If these controls are not possible, consider using virtual patching
 
 ---
@@ -293,13 +294,13 @@ data is automatically decrypted when retrieved, allowing an SQL injection flaw t
 
 +++
 
-# How do I fight it?
+## How do I fight it?
 
-* Don’t store sensitive data unnecessarily. Discard it as soon as possible.
-* Make sure you encrypt all sensitive data at REST
-* Encrypt all data in transit, such as using TLS
-* Ensure up-to-date and strong standard algorithms or ciphers
-* Ensure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt)
+* Discard sensitive data as soon as possible |
+* Make sure you encrypt all sensitive data at REST |
+* Encrypt all data in transit |
+* Ensure up-to-date and strong standard algorithms or ciphers |
+* Ensure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) |
 * Disable caching for response that contain sensitive data
 
 ---
@@ -319,19 +320,25 @@ other implementation flaws to assume other users’ identities
 
 Example:
 
-Credential stuffing, the use of lists of known passwords, is a common attack. If an application does not rate
-limit authentication attempts, the application can be used as a password oracle to determine if the credentials are valid
+Credential stuffing, is a common attack. If an application does not rate limit authentication attempts, 
+the application can be used as a password oracle to determine if the credentials are valid
+
+Note:
+Credential stuffing -> the use of lists of known passwords
 
 +++
 
-# How do I fight it?
-* Do not deploy with any default credentials
-* Ensure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt)
-* Implement password checks against [top 10000 worst passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords)
-* Where possible, implement multi-factor authentication
-* Log authentication failures
-* Align password length, complexity and rotation policies with [NIST 800-63 B's guidelines in section 5.1.1 for Memorized Secrets](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret)
+## How do I fight it?
 
+* Do not deploy with any default credentials |
+* Ensure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) |
+* Implement password checks against [top 10000 worst passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords) |
+* Where possible, implement multi-factor authentication |
+* Log authentication failures |
+* Align password length, complexity and rotation policies with [NIST 800-63 B's guidelines](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret)
+
+Note:
+NIST -> National Institute of Standards and Technology
 ---
 
 # Injection
@@ -353,7 +360,7 @@ Example:
 
 +++
 
-# How do I fight it?
+## How do I fight it?
 
 Valudate your inputs
 
