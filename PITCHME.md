@@ -83,7 +83,7 @@ serious data loss or server takeover.
 
 +++
 
-# What is virtual patch?
+## What is virtual patch?
 
 A security policy enforcement layer which prevents the exploitation of a known vulnerability.
 The virtual patch works since the security enforcement layer analyzes transactions and intercepts attacks in transit, so malicious traffic never reaches the web application. 
@@ -175,7 +175,7 @@ Number 6
 
 ## What's that?
 
-Title says it all, but for ### example:
+Title says it all, but for example:
 - insecure default configurations |
 - open S3 buckets |
 - misconfigured HTTP headers |
@@ -192,7 +192,7 @@ The app server admin console is automatically installed and not removed.
 
 ## How do I fight it?
 
-- A repeatable hardening process that makes it fast and easy to deploy another environment that is properly locked down. |
+- A repeatable hardening process that makes it fast and easy to deploy another environment that is properly locked down |
 - Dev, QA and prod environments should be configured identically (With different credentials obviously) |
 - Remove unused dependencies and frameworks | 
 - Update as fast as possible (See Number 9) |
@@ -218,7 +218,7 @@ exploit these flaws to access unauthorized functionality and/or data.
 pstmt.setString(1, request.getParameter("acct"));
 ResultSet results = pstmt.executeQuery( );
 
-http://example.com/app/accountInfo?acct=notmyacct
+example.com/app/accountInfo?acct=notmyacct
 ```
 @[1-2](The application uses unverified data in a SQL call that is accessing account information)
 @[4](An attacker simply modifies the 'acct' parameter)
@@ -273,6 +273,9 @@ The attacker attempts to extract data from the server
 - Upgrade SOAP to the latest version |
 - If these controls are not possible, consider using virtual patching |
 
+Note:
+DTD -> Document type definition
+
 ---
 
 # Sensitive Data Exposure
@@ -296,12 +299,12 @@ data is automatically decrypted when retrieved, allowing an SQL injection flaw t
 
 ## How do I fight it?
 
-- Discard sensitive data as soon as possible |
-- Make sure you encrypt all sensitive data at REST |
-- Encrypt all data in transit |
-- Ensure up-to-date and strong standard algorithms or ciphers |
-- Ensure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) |
-- Disable caching for response that contain sensitive data |
+<li class="fragment">Discard sensitive data as soon as possible</li>
+<li class="fragment">Make sure you encrypt all sensitive data at REST</li>
+<li class="fragment">Encrypt all data in transit</li>
+<li class="fragment">Ensure up-to-date and strong standard algorithms or ciphers</li>
+<li class="fragment">Ensure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt)</li>
+<li class="fragment">Disable caching for response that contain sensitive data</li>
 
 ---
 
@@ -330,12 +333,12 @@ Credential stuffing -> the use of lists of known passwords
 
 ## How do I fight it?
 
-- Do not deploy with any default credentials |
-- Ensure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) |
-- Implement password checks against [top 10000 worst passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords) |
-- Where possible, implement multi-factor authentication |
-- Log authentication failures |
-- Align password length, complexity and rotation policies with [NIST 800-63 B's guidelines](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret) |
+<li class="fragment">DDo not deploy with any default credentials</li>
+<li class="fragment">DEnsure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt)</li>
+<li class="fragment">DImplement password checks against [top 10000 worst passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords)</li>
+<li class="fragment">DWhere possible, implement multi-factor authentication</li>
+<li class="fragment">DLog authentication failures</li>
+<li class="fragment">DAlign password length, complexity and rotation policies with [NIST 800-63 B's guidelines](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret)</li>
 
 Note:
 NIST -> National Institute of Standards and Technology
@@ -362,8 +365,8 @@ executing unintended commands or accessing data without proper authorization.
 
 ## How do I fight it?
 
-Valudate your inputs
+Validate your inputs
 
 ---
 
-That's all folks!
+#That's all folks!
