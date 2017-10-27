@@ -58,9 +58,11 @@ Note:
 
 ## How do I fight it?
 
-- All login, access control failures and input validation failures should be logged |
-- Establish effective monitoring and alerting |
-- Establish / adapt incident response and recovery plan (Such as [NIST](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)) |
+<ul>
+    <li class="fragment">All login, access control failures and input validation failures should be logged</li>
+    <li class="fragment">Establish effective monitoring and alerting</li>
+    <li class="fragment">Establish / adapt incident response and recovery plan (Such as [NIST](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final))</li>
+</ul>
 
 Note:
 NIST -> National Institute of Standards and Technology
@@ -74,9 +76,10 @@ Number 9
 
 ## What's that?
 
-Components (ex. libraries, frameworks) run with the same
-privileges as the application. If a vulnerable component is exploited, such an attack can facilitate
-serious data loss or server takeover.
+Components (ex. libraries, frameworks) run with the same privileges as the application. 
+
+
+If a vulnerable component is exploited, such an attack can facilitate serious data loss or server takeover.
 
 +++
 
@@ -94,11 +97,18 @@ Note:
 - Get Signed packages from official sources
 - If update not possible, use virtual patching
 
-+++
+---
 
 ## What is virtual patch?
 
 #### A security policy enforcement layer which prevents the exploitation of a known vulnerability.
+
+Note:
+Since it's going to be mentioned few times, it would be nice to explain what Virtual Patch is. Its...
+
++++
+
+## What is virtual patch?
 
 The virtual patch works since the security enforcement layer analyzes transactions and intercepts attacks in transit, so malicious traffic never reaches the web application. 
 
@@ -133,6 +143,10 @@ i:3;s:32:"b6a8b3bea87fe0e05022f8f3c88bc960";}
 
 ## How do I fight it?
 
+- don't accept serialized objects from untrusted sources |
+- use serialization mediums that only permit primitive data types |
+
+Note:
 The only safe architectural pattern is to not accept serialized
 objects from untrusted sources or to use serialization mediums
 that only permit primitive data types.
@@ -172,8 +186,7 @@ value='" + request.getParameter("CC") + "'>";
 foo='+document.cookie</script>'.
 ```
 
-@[1-2](The application uses untrusted data in the construction of the
-following HTML snippet without validation or escaping)
+@[1-2](The application uses untrusted data in the construction of the following HTML snippet without validation or escaping)
 @[4-6](The attacker modifies the ‘CC’ parameter in his browser and executes a script)
 
 Note:
@@ -197,7 +210,7 @@ Number 6
 
 ## What's that?
 
-Title says it all, but for example:
+Name says it all, but for example:
 - Insecure default configurations |
 - Misconfigured HTTP headers |
 - Error messages containing sensitive information |
@@ -231,8 +244,10 @@ Number 5
 
 ## What's that?
 
-Restrictions on what authenticated users are allowed to do are not properly enforced. Attackers can
-exploit these flaws to access unauthorized functionality and/or data.
+Restrictions on what authenticated users are allowed to do are not properly enforced. 
+
+
+Attackers can exploit these flaws to access unauthorized functionality and/or data.
 
 +++
 
@@ -246,6 +261,9 @@ example.com/app/accountInfo?acct=notmyacct
 ```
 @[1-2](The application uses unverified data in a SQL call that is accessing account information)
 @[4](An attacker simply modifies the 'acct' parameter)
+
+Note:
+Double click!
 
 +++
 
@@ -268,6 +286,8 @@ Number 4
 ## What's that?
 
 The XML standard includes the idea of an external general parsed entity (an external entity). 
+
+
 During parsing of the XML document, the parser will expand these links and include the content of the URI in the returned XML document.
 
 +++
@@ -310,14 +330,16 @@ Number 3
 Web applications and APIS don't protect sensitive data.
 
 Note:
-So, what's that? Basically it' when Web applications and APIS don't protect sensitive data by ..
+So, what's that? Basically it' when Web applications and APIs don't protect sensitive data by ..
 
 +++
 
 ### Example:
 
-An application encrypts credit card numbers in a database using automatic database encryption. However, this
-data is automatically decrypted when retrieved, allowing an SQL injection flaw to retrieve credit card numbers in clear text.
+An application encrypts credit card numbers in a database using automatic database encryption. 
+
+
+However, this data is automatically decrypted when retrieved, allowing an SQL injection flaw to retrieve credit card numbers in clear text.
 
 +++
 
@@ -342,17 +364,22 @@ Number 2
 
 Application functions related to authentication and session management implemented
 incorrectly, allowing attackers to:
-* compromise passwords
-* keys
-* session tokens
-* exploit other implementation flaws to assume other users’ identities
+- compromise passwords |
+- keys |
+- session tokens |
+- exploit other implementation flaws to assume other users’ identities |
 
 +++
 
 ### Example:
 
-Credential stuffing is a common attack. If an application does not rate limit authentication attempts, 
-the application can be used as a password oracle to determine if the credentials are valid
+Credential stuffing is a common attack. 
+
+
+If an application does not rate limit authentication attempts
+
+
+Then the application can be used as a password oracle to determine if the credentials are valid
 
 Note:
 Credential stuffing -> the use of lists of known passwords
@@ -381,6 +408,8 @@ Number 1
 ## What's that?
 
 Injection occurs when untrusted data is sent to an interpreter as part of a command or query.
+
+
 The attacker’s hostile data can trick the interpreter into executing unintended commands or accessing data without proper authorization.
 
 +++
@@ -393,7 +422,7 @@ The attacker’s hostile data can trick the interpreter into executing unintende
 
 ## How do I fight it?
 
-Validate your inputs
+Sanitize your inputs
 
 ---
 
