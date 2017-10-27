@@ -46,8 +46,11 @@ Number 10
 
 ## What's that?
 
-Insufficient logging and monitoring, along with ineffective incident response allows 
-attackers to further attack systems, maintain persistence, pivot to more systems,
+- Insufficient logging and monitoring |
+- Ineffective incident response |
+
+Note: 
+allows attackers to further attack systems, maintain persistence, pivot to more systems,
 and tamper with data.
 
 +++
@@ -98,10 +101,6 @@ Number 8
 ## What's that?
 
 Insecure deserialization flaws occur when an application receives hostile serialized objects.
-Insecure deserialization leads to remote code execution.
-
-Note:
-Maybe add example here, as "what's that" may not be clear
 
 +++
 
@@ -135,9 +134,8 @@ Number 7
 
 ## What's that?
 
-XSS flaws occur whenever an application includes untrusted data in a new web page without
-proper validation or escaping, or updates an existing web page with user supplied data using a
-browser API that can create JavaScript.
+* application includes untrusted data in a new web page without validation or escaping
+* application updates an existing web page with user supplied data using a browser API that can create JavaScript
 
 +++
 
@@ -176,11 +174,10 @@ Number 6
 ## What's that?
 
 Title says it all, but for example:
-- insecure default configurations |
-- open S3 buckets |
-- misconfigured HTTP headers |
-- error messages containing sensitive information |
-- not patching or upgrading systems, frameworks, dependencies, and components in a timely fashion (or at all) |
+- Insecure default configurations |
+- Misconfigured HTTP headers |
+- Error messages containing sensitive information |
+- Not patching or upgrading systems, frameworks, dependencies, and components in a timely fashion |
 
 +++
 
