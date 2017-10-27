@@ -1,6 +1,6 @@
 # TOP 10 SECURITY ISSUES
 
-Number X will surprise you!
+Number 1 will surprise you!
 
 Note:
 Fill in which number
@@ -46,8 +46,6 @@ Number 10
 
 ## What's that?
 
-+++
-
 Insufficient logging and monitoring, along with ineffective incident response allows 
 attackers to further attack systems, maintain persistence, pivot to more systems,
 and tamper with data.
@@ -76,10 +74,12 @@ serious data loss or server takeover.
 +++
 
 ## How do I fight it?
-<li class="fragment">Keep your dependencies up to date (tools: [versions](http://www.mojohaus.org/versions-maven-plugin/), [OWASP DependencyCheck](https://www.owasp.org/index.php/OWASP_Dependency_Check), [retire.js](https://github.com/retirejs/retire.js/))</li>
-<li class="fragment">Monitor sources like [Common Vulnerabilities and Exposures](https://cve.mitre.org/) and [National Vulnerability Database](https://nvd.nist.gov/) </li>
-<li class="fragment">Get packages from official sources and prefer signed packages</li>
-<li class="fragment">If update is not possible, consider using [virtual patch](https://www.owasp.org/index.php/Virtual_Patching_Best_Practices#What_is_a_Virtual_Patch.3F)</li>
+<ul>
+    <li class="fragment">Keep your dependencies up to date (tools: [versions](http://www.mojohaus.org/versions-maven-plugin/), [OWASP DependencyCheck](https://www.owasp.org/index.php/OWASP_Dependency_Check), [retire.js](https://github.com/retirejs/retire.js/))</li>
+    <li class="fragment">Monitor sources like [Common Vulnerabilities and Exposures](https://cve.mitre.org/) and [National Vulnerability Database](https://nvd.nist.gov/) </li>
+    <li class="fragment">Get packages from official sources and prefer signed packages</li>
+    <li class="fragment">If update is not possible, consider using [virtual patch](https://www.owasp.org/index.php/Virtual_Patching_Best_Practices#What_is_a_Virtual_Patch.3F)</li>
+</ul>
 
 +++
 
@@ -298,13 +298,14 @@ data is automatically decrypted when retrieved, allowing an SQL injection flaw t
 +++
 
 ## How do I fight it?
-
-<li class="fragment">Discard sensitive data as soon as possible</li>
-<li class="fragment">Make sure you encrypt all sensitive data at REST</li>
-<li class="fragment">Encrypt all data in transit</li>
-<li class="fragment">Ensure up-to-date and strong standard algorithms or ciphers</li>
-<li class="fragment">Ensure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt)</li>
-<li class="fragment">Disable caching for response that contain sensitive data</li>
+<ul>
+    <li class="fragment">Discard sensitive data as soon as possible</li>
+    <li class="fragment">Make sure you encrypt all sensitive data at REST</li>
+    <li class="fragment">Encrypt all data in transit</li>
+    <li class="fragment">Ensure up-to-date and strong standard algorithms or ciphers</li>
+    <li class="fragment">Ensure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt)</li>
+    <li class="fragment">Disable caching for response that contain sensitive data</li>
+</ul>
 
 ---
 
@@ -332,13 +333,14 @@ Credential stuffing -> the use of lists of known passwords
 +++
 
 ## How do I fight it?
-
-<li class="fragment">DDo not deploy with any default credentials</li>
-<li class="fragment">DEnsure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt)</li>
-<li class="fragment">DImplement password checks against [top 10000 worst passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords)</li>
-<li class="fragment">DWhere possible, implement multi-factor authentication</li>
-<li class="fragment">DLog authentication failures</li>
-<li class="fragment">DAlign password length, complexity and rotation policies with [NIST 800-63 B's guidelines](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret)</li>
+<ul>
+    <li class="fragment">DDo not deploy with any default credentials</li>
+    <li class="fragment">DEnsure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt)</li>
+    <li class="fragment">DImplement password checks against [top 10000 worst passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords)</li>
+    <li class="fragment">DWhere possible, implement multi-factor authentication</li>
+    <li class="fragment">DLog authentication failures</li>
+    <li class="fragment">DAlign password length, complexity and rotation policies with [NIST 800-63 B's guidelines](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret)</li>
+</ul>
 
 Note:
 NIST -> National Institute of Standards and Technology
