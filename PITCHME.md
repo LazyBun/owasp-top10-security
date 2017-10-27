@@ -51,8 +51,8 @@ Number 10
 
 Note:
 - Obviously the cause of insufficient logging is insufficient logging,
-- But ineffective response to incidents included in this point as well
-- Those flaws allows attackers to further attack systems, maintain persistence, pivot to more systems, and tamper with data.
+- But ineffective response to incidents are included in this point as well
+- These flaws allows attackers to further attack systems, maintain persistence, pivot to more systems, and tamper with data.
 
 +++
 
@@ -61,7 +61,7 @@ Note:
 <ul>
     <li class="fragment">All login, access control failures and input validation failures should be logged</li>
     <li class="fragment">Establish effective monitoring and alerting</li>
-    <li class="fragment">Establish / adapt incident response and recovery plan (Such as [NIST](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final))</li>
+    <li class="fragment">Establish / adapt incident response and recovery plan (Such as one provided by [NIST](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final))</li>
 </ul>
 
 Note:
@@ -80,6 +80,12 @@ Components (ex. libraries, frameworks) run with the same privileges as the appli
 
 
 If a vulnerable component is exploited, such an attack can facilitate serious data loss or server takeover.
+
+
+Note:
+As you know, components...
+
+So if a vulnerable...
 
 +++
 
