@@ -1,3 +1,35 @@
+# JDD Summary
+
+---
+
+### +
+
+- Some neat talks
+  - Nginx + Lua = OpenResty
+  - Serverless czyli jak zbudować aplikację bez serwera (za darmo)
+  - Write NOW, Run Anytime
+  - Co back-end developer powinien wiedzieć o Web Security
+- After party
+
+![Jdd](/assets/jdd.jpg)
+
+### -
+
+- Most talks done by Poland's JUG members
+- Insufficient amount of well known speakers
+- Price:Value ratio low
+- Small venue
+
++++
+
+#### TL;DR
+
+## Meh
+
+### Go to Devoxx
+
+---
+
 # TOP 10 SECURITY ISSUES
 
 Number 1 will surprise you!
