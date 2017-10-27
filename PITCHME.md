@@ -37,7 +37,7 @@ over 100,000 real-world applications and APIs.
 
 ---
 
----?image=assets/start.gif&size=auto 75%
+?image=assets/start.gif&size=auto 60%
 
 ---
 
