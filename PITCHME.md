@@ -35,9 +35,7 @@ The OWASP Top 10 for 2017 is based primarily on 40+ data submissions from firms 
 industry survey that was completed by 515 individuals. This data spans vulnerabilities gathered from hundreds of organizations and
 over 100,000 real-world applications and APIs.
 
----
-
-?image=assets/start.gif&size=auto 60%
+---?image=assets/start.gif&size=auto 60%
 
 ---
 
