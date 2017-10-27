@@ -2,7 +2,6 @@
 
 Number 1 will surprise you!
 
-
 ---
 
 # Said who?
@@ -133,7 +132,7 @@ Insecure deserialization flaws occur when an application receives hostile serial
 
 ### Example:
 
-A forum uses object serialization to save a cookie containing user ID, role, password hash.
+Application uses object serialization to save a cookie containing user ID, role, password hash.
 
 ```json
 a:4:{i:0;i:132;i:1;s:7:"Mallory";i:2;s:4:"user";
@@ -149,13 +148,12 @@ i:3;s:32:"b6a8b3bea87fe0e05022f8f3c88bc960";}
 
 ## How do I fight it?
 
-- don't accept serialized objects from untrusted sources |
-- use serialization mediums that only permit primitive data types |
+- Don't accept serialized objects from untrusted sources |
+- Only permit primitive data types |
 
 Note:
 The only safe architectural pattern is to not accept serialized
-objects from untrusted sources or to use serialization mediums
-that only permit primitive data types.
+objects from untrusted sources or only permit primitive data types.
 
 +++
 
@@ -176,8 +174,8 @@ Number 7
 
 ## What's that?
 
-* application includes untrusted data in a new web page without validation or escaping
-* application updates an existing web page with user supplied data using a browser API that can create JavaScript
+* Application includes untrusted data in a new web page without validation or escaping
+* Application updates an existing web page with user supplied data using a browser API that can create JavaScript
 
 +++
 
@@ -336,7 +334,7 @@ Number 3
 Web applications and APIS don't protect sensitive data.
 
 Note:
-So, what's that? Basically it' when Web applications and APIs don't protect sensitive data by ..
+So, what's that? Basically it' when Web applications ...
 
 +++
 
@@ -369,11 +367,11 @@ Number 2
 ## What's that?
 
 Application functions related to authentication and session management implemented
-incorrectly, allowing attackers to:
-- compromise passwords |
-- keys |
-- session tokens |
-- exploit other implementation flaws to assume other users’ identities |
+incorrectly, allowing attackers to compromise:
+- Passwords |
+- Keys |
+- Session tokens |
+- Exploit other implementation flaws to assume other users’ identities |
 
 +++
 
@@ -432,4 +430,9 @@ Sanitize your inputs
 
 ---
 
-# That's all folks!
+### That's all folks!
+
+Sources:
+- [Top 10 by OWASP](https://github.com/OWASP/Top10/blob/master/2017/OWASP%20Top%2010%202017%20RC2%20Final.pdf)
+- [XEE Definition from Wikipedia](https://en.wikipedia.org/wiki/XML_external_entity_attack)
+
