@@ -3,26 +3,22 @@
 ---
 
 ### +
-<span style="font-size:25px">
 - Some neat talks
   - Nginx + Lua = OpenResty
   - Serverless czyli jak zbudować aplikację bez serwera (za darmo)
   - Write NOW, Run Anytime
   - Co back-end developer powinien wiedzieć o Web Security
 - After party
-</span>
 
-![Jdd](/assets/jdd.jpg)
+---?image=assets/jdd.jpg&size=auto 60%
 
 ---
 
 ### -
-<span style="font-size:30px">
 - Most talks done by Poland's JUG members
 - Insufficient amount of well known speakers
 - Price:Value ratio low
 - Small venue
-</span>
 +++
 
 #### TL;DR
