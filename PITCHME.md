@@ -16,7 +16,7 @@ Short time here, just go to next slide for detailed summary
 
 +++
 
-# What is OWASP
+## What is OWASP
 
 The Open Web Application Security Project
 
@@ -44,7 +44,7 @@ Number 10
 
 +++
 
-# What's that?
+## What's that?
 
 +++
 
@@ -67,7 +67,7 @@ Number 9
 
 +++
 
-# What's that?
+## What's that?
 
 Components (ex. libraries, frameworks) run with the same
 privileges as the application. If a vulnerable component is exploited, such an attack can facilitate
@@ -95,7 +95,7 @@ Number 8
 
 +++
 
-# What's that?
+## What's that?
 
 Insecure deserialization flaws occur when an application receives hostile serialized objects.
 Insecure deserialization leads to remote code execution.
@@ -105,7 +105,7 @@ Maybe add example here, as "what's that" may not be clear
 
 +++
 
-Example:
+### Example:
 
 A forum uses object serialization to save a cookie containing user ID, role, password hash.
 
@@ -133,7 +133,7 @@ Number 7
 
 +++
 
-# What's that?
+## What's that?
 
 XSS flaws occur whenever an application includes untrusted data in a new web page without
 proper validation or escaping, or updates an existing web page with user supplied data using a
@@ -141,7 +141,7 @@ browser API that can create JavaScript.
 
 +++
 
-Example:
+### Example:
 
 The application uses untrusted data in the construction of the
 following HTML snippet without validation or escaping
@@ -173,9 +173,9 @@ Number 6
 
 +++
 
-# What's that?
+## What's that?
 
-Title says it all, but for example:
+Title says it all, but for ### example:
 - insecure default configurations |
 - open S3 buckets |
 - misconfigured HTTP headers |
@@ -184,7 +184,7 @@ Title says it all, but for example:
 
 +++
 
-Example:
+### Example:
 
 The app server admin console is automatically installed and not removed.
 
@@ -205,14 +205,14 @@ Number 5
 
 +++
 
-# What's that?
+## What's that?
 
 Restrictions on what authenticated users are allowed to do are not properly enforced. Attackers can
 exploit these flaws to access unauthorized functionality and/or data.
 
 +++
 
-Example:
+### Example:
 
 ```java
 pstmt.setString(1, request.getParameter("acct"));
@@ -241,7 +241,7 @@ Number 4
 
 +++
 
-# What's that?
+## What's that?
 
 External entities can be used to disclose internal files using the file URI handler,
 internal SMB file shares on unpatched Windows servers, internal port scanning, remote code
@@ -249,7 +249,7 @@ execution, and denial of service attacks.
 
 +++
 
-Example:
+### Example:
 
 The attacker attempts to extract data from the server
 
@@ -280,14 +280,14 @@ Number 3
 
 +++
 
-# What's that?
+## What's that?
 
 Many web applications and APIs do not properly protect sensitive data. Sensitive data deserves extra protection such as
 encryption at rest or in transit, as well as special precautions when exchanged with the browser.
 
 +++
 
-Example:
+### Example:
 
 An application encrypts credit card numbers in a database using automatic database encryption. However, this
 data is automatically decrypted when retrieved, allowing an SQL injection flaw to retrieve credit card numbers in clear text.
@@ -310,7 +310,7 @@ Number 2
 
 +++
 
-# What's that?
+## What's that?
 
 Application functions related to authentication and session management are often implemented
 incorrectly, allowing attackers to compromise passwords, keys, or session tokens, or to exploit
@@ -318,7 +318,7 @@ other implementation flaws to assume other users’ identities
 
 +++
 
-Example:
+### Example:
 
 Credential stuffing, is a common attack. If an application does not rate limit authentication attempts, 
 the application can be used as a password oracle to determine if the credentials are valid
@@ -346,7 +346,7 @@ Number 1
 
 +++
 
-# What's that?
+## What's that?
 
 Injection flaws, such as SQL, OS, and LDAP injection occur when untrusted data is sent to an
 interpreter as part of a command or query. The attacker’s hostile data can trick the interpreter into
@@ -354,7 +354,7 @@ executing unintended commands or accessing data without proper authorization.
 
 +++
 
-Example:
+### Example:
 
 ![Relevant XKCD](assets/injection_maymay.png)
 
